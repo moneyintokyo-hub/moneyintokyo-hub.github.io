@@ -1,0 +1,396 @@
+<title>Money in Tokyo 連結主頁</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500&display=swap">
+<style>
+/* Layout: a quiet editorial column. Masthead with Tokyo time, a serif statement, links set as a hairline index, and one object: a black member card with gold foil for the fee discount. */
+:root {
+  color-scheme: dark;
+  --bg: #090807;
+  --card-a: #1c1912;
+  --card-b: #0c0b09;
+  --fg: #ece5d5;
+  --muted: #8d8574;
+  --hair: rgba(236, 229, 213, 0.13);
+  --gold: #c9a65a;
+  --gold-hi: #f0dca6;
+  --gold-lo: #8a6c2c;
+  --foil: linear-gradient(100deg, #9a7a36 0%, #f0dca6 38%, #c9a65a 62%, #8a6c2c 100%);
+  --serif: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+  --latin: "Cormorant Garamond", "Noto Serif TC", Georgia, serif;
+  --sans: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  background:
+    radial-gradient(90% 420px at 85% -80px, rgba(201, 166, 90, 0.17), transparent 70%),
+    radial-gradient(70% 380px at 0% 105%, rgba(201, 166, 90, 0.07), transparent 70%),
+    var(--bg);
+  color: var(--fg);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.75;
+  padding-block: 28px 56px;
+  padding-left: max(22px, env(safe-area-inset-left, 0px));
+  padding-right: max(22px, env(safe-area-inset-right, 0px));
+  -webkit-font-smoothing: antialiased;
+}
+/* paper grain */
+body::after {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+a { color: inherit; text-decoration: none; }
+.page {
+  position: relative;
+  max-width: 500px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 52px;
+}
+.eyebrow {
+  margin: 0;
+  font-family: var(--latin);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* masthead */
+.mast { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.brand img { width: 40px; height: 40px; border-radius: 50%; flex: none; box-shadow: 0 0 0 1px rgba(201, 166, 90, 0.45); }
+.brand span {
+  font-family: var(--latin);
+  font-weight: 700;
+  font-size: clamp(11px, 3.4vw, 14px);
+  letter-spacing: 0.2em;
+  white-space: nowrap;
+}
+.clock {
+  font-family: var(--latin);
+  font-weight: 600;
+  font-size: clamp(11px, 3.2vw, 13px);
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  flex: none;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+.clock b { color: var(--fg); font-weight: 600; }
+
+/* statement */
+.hero { display: flex; flex-direction: column; gap: 22px; }
+h1 {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(30px, 9.2vw, 44px);
+  line-height: 1.32;
+  letter-spacing: 0.01em;
+}
+h1 em {
+  font-style: normal;
+  background: var(--foil);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero p { margin: 0; color: var(--muted); max-width: 30em; }
+.hero p b { color: var(--fg); font-weight: 500; }
+
+/* index of links */
+.group { display: flex; flex-direction: column; gap: 16px; }
+.index { display: flex; flex-direction: column; border-top: 1px solid var(--hair); }
+.row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding-block: 20px;
+  border-bottom: 1px solid var(--hair);
+}
+.row::after {
+  content: "";
+  position: absolute; left: 0; bottom: -1px;
+  width: 100%; height: 1px;
+  background: var(--foil);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.row:hover::after, .row:focus-visible::after { transform: scaleX(1); }
+.row-txt { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.row-txt small {
+  font-family: var(--latin);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  color: var(--muted);
+}
+.row-txt strong {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.4;
+}
+.row-txt span { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.go {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--hair);
+  display: grid; place-items: center;
+  color: var(--gold);
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.go svg { width: 16px; height: 16px; display: block; }
+.row:hover .go { background: var(--gold); border-color: var(--gold); color: var(--bg); }
+a:focus-visible { outline: 1px solid var(--gold-hi); outline-offset: 6px; border-radius: 4px; }
+
+/* member card */
+.pass {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  aspect-ratio: 1.586 / 1;
+  max-width: 100%;
+  padding: clamp(18px, 5.4vw, 26px);
+  border-radius: 18px;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(140deg, var(--card-a), var(--card-b) 70%) padding-box,
+    linear-gradient(140deg, #f0dca6, #6f5621 35%, #2a2313 60%, #c9a65a) border-box;
+  box-shadow: 0 30px 60px -28px rgba(201, 166, 90, 0.38), 0 2px 0 rgba(255, 255, 255, 0.03) inset;
+  overflow: hidden;
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.5s ease;
+}
+.pass::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(105deg, transparent 35%, rgba(240, 220, 166, 0.14) 50%, transparent 65%);
+  transform: translateX(-70%);
+  transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  pointer-events: none;
+}
+.pass:hover { transform: translateY(-3px); box-shadow: 0 38px 70px -26px rgba(201, 166, 90, 0.5), 0 2px 0 rgba(255, 255, 255, 0.03) inset; }
+.pass:hover::before { transform: translateX(70%); }
+.pass-top, .pass-bot { position: relative; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
+.pass-top { align-items: center; }
+.pass-top span {
+  font-family: var(--latin); font-weight: 700; font-size: 14px; letter-spacing: 0.3em;
+}
+.pass-top i {
+  font-style: normal;
+  font-family: var(--latin); font-weight: 600; font-size: 11px; letter-spacing: 0.26em;
+  color: var(--muted);
+}
+.pass-mid { position: relative; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.pass-mid strong {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(30px, 9.4vw, 42px);
+  line-height: 1.1;
+  background: var(--foil);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.pass-mid span { font-size: 13px; color: var(--muted); }
+.code { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.code small { font-family: var(--latin); font-weight: 600; font-size: 10px; letter-spacing: 0.28em; color: var(--muted); }
+.code b {
+  font-family: var(--latin); font-weight: 600;
+  font-size: clamp(14px, 4.2vw, 17px);
+  letter-spacing: 0.2em;
+  white-space: nowrap;
+}
+.cta {
+  flex: none;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--bg);
+  background: var(--foil);
+  padding: 8px 16px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* what you get */
+.creed { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 22px; }
+.creed li { display: grid; grid-template-columns: 1fr; gap: 4px; padding-left: 18px; border-left: 1px solid var(--gold-lo); }
+.creed b { font-family: var(--serif); font-weight: 700; font-size: 17px; line-height: 1.5; }
+.creed span { color: var(--muted); font-size: 14px; }
+
+footer {
+  border-top: 1px solid var(--hair);
+  padding-top: 22px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+  display: flex; flex-direction: column; gap: 10px;
+}
+footer p { margin: 0; }
+footer .sig { font-family: var(--latin); font-weight: 600; letter-spacing: 0.26em; font-size: 11px; }
+
+.rise { animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.rise:nth-child(2) { animation-delay: 0.08s; }
+.rise:nth-child(3) { animation-delay: 0.16s; }
+.rise:nth-child(4) { animation-delay: 0.24s; }
+.rise:nth-child(5) { animation-delay: 0.32s; }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .rise { animation: none; }
+  .row::after, .pass, .pass::before, .go { transition: none; }
+}
+
+/* v3: Chinese section labels, compact rows for videos and playlists */
+.eyebrow { font-family: var(--sans); font-weight: 500; font-size: 12px; letter-spacing: 0.32em; text-transform: none; }
+.hero { gap: 16px; }
+.page { gap: 44px; }
+.row.slim { padding-block: 16px; align-items: baseline; }
+.row.slim strong { font-size: 16px; font-weight: 500; line-height: 1.55; }
+.meta {
+  font-family: var(--latin); font-weight: 600; font-size: 13px; letter-spacing: 0.08em;
+  color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums lining-nums;
+  transition: color 0.3s ease;
+}
+.row.slim .meta:lang(zh), .row.slim .meta { }
+.row.slim:hover .meta { color: var(--gold); }
+.rise:nth-child(6) { animation-delay: 0.4s; }
+
+/* v4: thumbnails on video and playlist rows */
+.row.media { grid-template-columns: clamp(118px, 36%, 168px) 1fr; align-items: center; gap: 16px; padding-block: 14px; }
+.row.media strong { font-size: 15px; font-weight: 500; line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.thumb { position: relative; display: block; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 8px; overflow: hidden; background: var(--card-a); box-shadow: 0 0 0 1px var(--hair); }
+.thumb img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.row.media:hover .thumb img { transform: scale(1.05); }
+.thumb i {
+  position: absolute; right: 5px; bottom: 5px;
+  font-style: normal; font-family: var(--sans); font-size: 10.5px; font-weight: 500; line-height: 1;
+  padding: 4px 6px; border-radius: 4px;
+  background: rgba(9, 8, 7, 0.82); color: var(--fg);
+  font-variant-numeric: tabular-nums;
+}
+.thumb.pl { overflow: visible; margin-top: 6px; }
+.thumb.pl img { border-radius: 8px; position: relative; }
+.thumb.pl::before, .thumb.pl::after { content: ""; position: absolute; left: 50%; transform: translateX(-50%); height: 3px; border-radius: 3px 3px 0 0; }
+.thumb.pl::before { top: -4px; width: 90%; background: rgba(201, 166, 90, 0.55); }
+.thumb.pl::after { top: -7px; width: 78%; background: rgba(201, 166, 90, 0.28); }
+.thumb.pl i { color: var(--gold-hi); letter-spacing: 0.08em; }
+@media (prefers-reduced-motion: reduce) { .thumb img { transition: none; } }
+</style>
+
+<main class="page">
+  <header class="mast rise">
+    <div class="brand">
+      <img src="{{AVATAR}}" alt="Money in Tokyo 標誌" width="40" height="40">
+      <span>MONEY IN TOKYO</span>
+    </div>
+    <div class="clock" aria-label="東京時間">TYO <b id="tokyo-time">JST</b></div>
+  </header>
+
+  <section class="hero rise">
+    <h1>在東京做交易，<br>帶你<em>從零開始</em><br>學技術分析。</h1>
+    <p>我是 Josh。美股、加密貨幣，實盤分析。</p>
+  </section>
+
+  <section class="group rise" aria-label="頻道與社群">
+    <nav class="index">
+      <a class="row" href="https://www.youtube.com/@MoneyInTokyo-Josh" target="_blank" rel="noopener">
+        <span class="row-txt"><strong>YouTube 頻道</strong><span>交易教學和金融故事，每天更新</span></span>
+        <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="row" href="https://t.me/MoneyInTokyo" target="_blank" rel="noopener">
+        <span class="row-txt"><strong>Telegram 社群</strong><span>學習資料，進群免費領</span></span>
+        <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+    </nav>
+  </section>
+
+  <section class="group rise" aria-label="合作優惠">
+    <p class="eyebrow">合作優惠</p>
+    <a class="pass" href="https://www.bitunix.com/register?vipCode=moneyintokyo" target="_blank" rel="noopener sponsored">
+      <div class="pass-top"><span>BITUNIX</span><i>MONEY IN TOKYO</i></div>
+      <div class="pass-mid"><strong>手續費 8 折</strong></div>
+      <div class="pass-bot">
+        <div class="code"><small>VIP CODE</small><b>MONEYINTOKYO</b></div>
+        <span class="cta">註冊領取</span>
+      </div>
+    </a>
+    <nav class="index">
+      <a class="row" href="https://tw.tradingview.com/?aff_id=1172478" target="_blank" rel="noopener sponsored">
+        <span class="row-txt"><strong>TradingView</strong><span>影片裡用的看盤軟體</span></span>
+        <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+    </nav>
+  </section>
+
+  <section class="group rise" aria-label="熱門影片">
+    <p class="eyebrow">熱門影片</p>
+    <nav class="index">
+      <a class="row media" href="https://www.youtube.com/watch?v=mJfV-iSjo8w" target="_blank" rel="noopener">
+        <span class="thumb"><img src="{{T:mJfV-iSjo8w}}" alt="" width="320" height="180" loading="lazy"><i>3:37</i></span>
+        <span class="row-txt"><strong>1011 暴跌一週年：一夜爆倉 190 億美元，開幾倍能活下來？</strong></span>
+      </a>
+      <a class="row media" href="https://www.youtube.com/watch?v=2kG8tEun2bU" target="_blank" rel="noopener">
+        <span class="thumb"><img src="{{T:2kG8tEun2bU}}" alt="" width="320" height="180" loading="lazy"><i>6:11</i></span>
+        <span class="row-txt"><strong>10 年前聽孫宇晨炒幣的，現在都財富自由了？</strong></span>
+      </a>
+      <a class="row media" href="https://www.youtube.com/watch?v=BQXpx4NAk38" target="_blank" rel="noopener">
+        <span class="thumb"><img src="{{T:BQXpx4NAk38}}" alt="" width="320" height="180" loading="lazy"><i>8:09</i></span>
+        <span class="row-txt"><strong>5 萬美元變 4800 萬：GameStop 完整故事</strong></span>
+      </a>
+    </nav>
+  </section>
+
+  <section class="group rise" aria-label="教學課程">
+    <p class="eyebrow">教學課程</p>
+    <nav class="index">
+      <a class="row media" href="https://www.youtube.com/playlist?list=PLeHe6HLDA44I" target="_blank" rel="noopener">
+        <span class="thumb pl"><img src="{{T:PLeHe6HLDA44I}}" alt="" width="320" height="180" loading="lazy"><i>播放清單</i></span>
+        <span class="row-txt"><strong>新手入門｜從零開始學交易</strong></span>
+      </a>
+      <a class="row media" href="https://www.youtube.com/playlist?list=PLB1ciUlr8gTo" target="_blank" rel="noopener">
+        <span class="thumb pl"><img src="{{T:PLB1ciUlr8gTo}}" alt="" width="320" height="180" loading="lazy"><i>播放清單</i></span>
+        <span class="row-txt"><strong>價格行為學｜裸 K 交易</strong></span>
+      </a>
+      <a class="row media" href="https://www.youtube.com/playlist?list=PLEUD4tHLbhK4" target="_blank" rel="noopener">
+        <span class="thumb pl"><img src="{{T:PLEUD4tHLbhK4}}" alt="" width="320" height="180" loading="lazy"><i>播放清單</i></span>
+        <span class="row-txt"><strong>聰明錢 SMC｜一課一個概念</strong></span>
+      </a>
+      <a class="row media" href="https://www.youtube.com/playlist?list=PLXRTsUuycOG8" target="_blank" rel="noopener">
+        <span class="thumb pl"><img src="{{T:PLXRTsUuycOG8}}" alt="" width="320" height="180" loading="lazy"><i>播放清單</i></span>
+        <span class="row-txt"><strong>指標實戰室｜TradingView 真圖實測</strong></span>
+      </a>
+    </nav>
+  </section>
+
+  <footer>
+    <p>Bitunix、TradingView 為合作連結。交易有風險，本頁內容不構成投資建議。</p>
+    <p class="sig">© MONEY IN TOKYO</p>
+  </footer>
+</main>
+
+<script>
+(function () {
+  var el = document.getElementById('tokyo-time');
+  if (!el) return;
+  function tick() {
+    try {
+      el.textContent = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Tokyo', hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date());
+    } catch (e) {}
+  }
+  tick();
+  setInterval(tick, 20000);
+})();
+</script>
