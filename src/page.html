@@ -288,6 +288,36 @@ footer .sig { font-family: var(--latin); font-weight: 600; letter-spacing: 0.26e
 .thumb.pl::after { top: -7px; width: 78%; background: rgba(201, 166, 90, 0.28); }
 .thumb.pl i { color: var(--gold-hi); letter-spacing: 0.08em; }
 @media (prefers-reduced-motion: reduce) { .thumb img { transition: none; } }
+
+/* v5: desktop. Phones keep the single column: the two wrappers dissolve there. */
+.lead, .rest { display: contents; }
+@media (min-width: 980px) {
+  body { padding-block: 44px 72px; }
+  .page {
+    max-width: 1120px;
+    display: grid;
+    grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+    column-gap: clamp(48px, 7vw, 104px);
+    row-gap: 72px;
+  }
+  .mast, footer { grid-column: 1 / -1; }
+  .lead { display: flex; flex-direction: column; gap: 44px; position: sticky; top: 44px; align-self: start; min-width: 0; }
+  .rest { display: flex; flex-direction: column; gap: 60px; min-width: 0; }
+  h1 { font-size: 52px; line-height: 1.3; }
+  .hero p { font-size: 16px; }
+  .brand img { width: 48px; height: 48px; }
+  .brand span { font-size: 15px; }
+  .pass { max-width: 470px; }
+  .videos .index, .courses .index { display: grid; border-top: 0; }
+  .videos .index { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+  .courses .index { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 28px; }
+  .videos .row.media, .courses .row.media { padding: 0; border-bottom: 0; }
+  .videos .row.media { grid-template-columns: minmax(0, 1fr); gap: 12px; align-content: start; }
+  .courses .row.media { grid-template-columns: 46% minmax(0, 1fr); }
+  .row.media::after { display: none; }
+  .row.media strong { transition: color 0.3s ease; }
+  .row.media:hover strong { color: var(--gold-hi); }
+}
 </style>
 
 <main class="page">
@@ -299,6 +329,7 @@ footer .sig { font-family: var(--latin); font-weight: 600; letter-spacing: 0.26e
     <div class="clock" aria-label="東京時間">TYO <b id="tokyo-time">JST</b></div>
   </header>
 
+  <div class="lead">
   <section class="hero rise">
     <h1>在東京做交易，<br>帶你<em>從零開始</em><br>學技術分析。</h1>
     <p>我是 Josh。美股、加密貨幣，實盤分析。</p>
@@ -317,6 +348,9 @@ footer .sig { font-family: var(--latin); font-weight: 600; letter-spacing: 0.26e
     </nav>
   </section>
 
+  </div>
+
+  <div class="rest">
   <section class="group rise" aria-label="合作優惠">
     <p class="eyebrow">合作優惠</p>
     <a class="pass" href="https://www.bitunix.com/register?vipCode=moneyintokyo" target="_blank" rel="noopener sponsored">
@@ -335,7 +369,7 @@ footer .sig { font-family: var(--latin); font-weight: 600; letter-spacing: 0.26e
     </nav>
   </section>
 
-  <section class="group rise" aria-label="熱門影片">
+  <section class="group rise videos" aria-label="熱門影片">
     <p class="eyebrow">熱門影片</p>
     <nav class="index">
       <a class="row media" href="https://www.youtube.com/watch?v=mJfV-iSjo8w" target="_blank" rel="noopener">
@@ -353,7 +387,7 @@ footer .sig { font-family: var(--latin); font-weight: 600; letter-spacing: 0.26e
     </nav>
   </section>
 
-  <section class="group rise" aria-label="教學課程">
+  <section class="group rise courses" aria-label="教學課程">
     <p class="eyebrow">教學課程</p>
     <nav class="index">
       <a class="row media" href="https://www.youtube.com/playlist?list=PLeHe6HLDA44I" target="_blank" rel="noopener">
@@ -374,6 +408,8 @@ footer .sig { font-family: var(--latin); font-weight: 600; letter-spacing: 0.26e
       </a>
     </nav>
   </section>
+
+  </div>
 
   <footer>
     <p>Bitunix、TradingView 為合作連結。交易有風險，本頁內容不構成投資建議。</p>
