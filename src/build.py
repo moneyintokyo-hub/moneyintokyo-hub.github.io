@@ -15,9 +15,9 @@ full = '''<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="我是 Josh，在東京做交易。YouTube 頻道、Telegram 社群、Bitunix 手續費 8 折、TradingView 連結都在這裡。">
+<meta name="description" content="用數據學交易，用產業鏈看懂 AI 美股。指標教學、交易員拆解、AI 產業鏈拆解，還有 Bitunix 手續費 8 折。">
 <meta property="og:title" content="Money in Tokyo｜Josh">
-<meta property="og:description" content="在東京做交易，帶你從零開始學技術分析。">
+<meta property="og:description" content="用數據學交易，用產業鏈看懂 AI 美股。">
 <meta property="og:image" content="https://moneyintokyo-hub.github.io/avatar.png">
 <meta property="og:url" content="https://moneyintokyo-hub.github.io/">
 <meta name="theme-color" content="#090807">

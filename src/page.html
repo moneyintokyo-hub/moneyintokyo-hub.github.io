@@ -318,6 +318,34 @@ footer .sig { font-family: var(--latin); font-weight: 600; letter-spacing: 0.26e
   .row.media strong { transition: color 0.3s ease; }
   .row.media:hover strong { color: var(--gold-hi); }
 }
+
+/* v6: conversion page. Two steps under the card, four picks, six playlists, schedule. */
+.row.media .row-txt span { font-size: 12.5px; }
+.steps { margin: 6px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--hair); }
+.steps li { display: grid; grid-template-columns: 34px 1fr; align-items: baseline; gap: 10px; padding-block: 15px; border-bottom: 1px solid var(--hair); }
+.steps li > b { font-family: var(--latin); font-weight: 600; font-size: 17px; letter-spacing: 0.08em; color: var(--gold); font-variant-numeric: lining-nums; }
+.steps li > a { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.steps strong { font-family: var(--serif); font-weight: 700; font-size: 17px; line-height: 1.5; }
+.steps li > a:hover strong { color: var(--gold-hi); }
+.steps strong { transition: color 0.3s ease; }
+.steps small { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.more, .note a { color: var(--gold); border-bottom: 1px solid var(--gold-lo); padding-bottom: 1px; transition: color 0.3s ease, border-color 0.3s ease; }
+.more { align-self: flex-start; font-size: 13px; }
+.more:hover, .note a:hover { color: var(--gold-hi); border-color: var(--gold-hi); }
+.times { margin: 0; border-top: 1px solid var(--hair); }
+.times > div { display: grid; grid-template-columns: 4.2em 1fr; align-items: baseline; gap: 12px; padding-block: 15px; border-bottom: 1px solid var(--hair); }
+.times dt { font-family: var(--serif); font-weight: 700; font-size: 17px; }
+.times dd { margin: 0; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; color: var(--muted); font-size: 14px; }
+.times dd b { font-family: var(--latin); font-weight: 600; font-size: 19px; letter-spacing: 0.06em; color: var(--fg); white-space: nowrap; font-variant-numeric: tabular-nums lining-nums; }
+.note { margin: 0; font-size: 12.5px; color: var(--muted); }
+.rise:nth-child(7) { animation-delay: 0.48s; }
+/* phones: the three steps come right after the statement */
+.mast { order: 1; } .hero { order: 2; } .join { order: 3; } .links { order: 4; }
+.videos, .courses, .sched, .tools { order: 5; } .lead, .rest { order: 5; } footer { order: 6; }
+@media (min-width: 980px) {
+  .videos .index { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 28px; }
+  .steps, .times { max-width: 470px; }
+}
 </style>
 
 <main class="page">
@@ -331,14 +359,14 @@ footer .sig { font-family: var(--latin); font-weight: 600; letter-spacing: 0.26e
 
   <div class="lead">
   <section class="hero rise">
-    <h1>在東京做交易，<br>帶你<em>從零開始</em><br>學技術分析。</h1>
-    <p>我是 Josh。美股、加密貨幣，實盤分析。</p>
+    <h1>用數據學交易，<br>用<em>產業鏈</em>看懂<br>AI 美股。</h1>
+    <p>我是 Josh，在東京做交易。這裡有三種影片：指標與方法教學、交易員拆解、AI 產業鏈拆解。</p>
   </section>
 
-  <section class="group rise" aria-label="頻道與社群">
+  <section class="group rise links" aria-label="頻道與社群">
     <nav class="index">
       <a class="row" href="https://www.youtube.com/@MoneyInTokyo-Josh" target="_blank" rel="noopener">
-        <span class="row-txt"><strong>YouTube 頻道</strong><span>交易教學和金融故事，每天更新</span></span>
+        <span class="row-txt"><strong>YouTube 頻道</strong><span>長片隔天中午更新，每週兩場直播</span></span>
         <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
       </a>
       <a class="row" href="https://t.me/MoneyInTokyo" target="_blank" rel="noopener">
@@ -351,60 +379,91 @@ footer .sig { font-family: var(--latin); font-weight: 600; letter-spacing: 0.26e
   </div>
 
   <div class="rest">
-  <section class="group rise" aria-label="合作優惠">
-    <p class="eyebrow">合作優惠</p>
+  <section class="group rise join" aria-label="兩步進群">
+    <p class="eyebrow">兩步進群</p>
     <a class="pass" href="https://www.bitunix.com/register?vipCode=moneyintokyo" target="_blank" rel="noopener sponsored">
       <div class="pass-top"><span>BITUNIX</span><i>MONEY IN TOKYO</i></div>
       <div class="pass-mid"><strong>手續費 8 折</strong></div>
       <div class="pass-bot">
         <div class="code"><small>VIP CODE</small><b>MONEYINTOKYO</b></div>
-        <span class="cta">註冊領取</span>
+        <span class="cta">立即註冊</span>
       </div>
     </a>
+    <ol class="steps">
+      <li><b>01</b><a href="https://www.bitunix.com/register?vipCode=moneyintokyo" target="_blank" rel="noopener sponsored"><strong>用這張卡註冊 Bitunix</strong><small>之後每一筆交易，手續費都是 8 折</small></a></li>
+      <li><b>02</b><a href="https://t.me/MoneyInTokyo" target="_blank" rel="noopener"><strong>進 Telegram 群</strong><small>每支教學片用到的指標和筆記都放在群裡</small></a></li>
+    </ol>
+  </section>
+
+  <section class="group rise videos" aria-label="第一次來，先看這幾支">
+    <p class="eyebrow">第一次來，先看這幾支</p>
+    <nav class="index">
+      <a class="row media" href="https://www.youtube.com/watch?v=Ckpb267iVZ4" target="_blank" rel="noopener">
+        <span class="thumb"><img src="{{T:Ckpb267iVZ4}}" alt="" width="320" height="180" loading="lazy"><i>6:47</i></span>
+        <span class="row-txt"><strong>TradingView 最火的 AI 指標，勝率 76%？設定加實測</strong></span>
+      </a>
+      <a class="row media" href="https://www.youtube.com/watch?v=Denvtsozcyc" target="_blank" rel="noopener">
+        <span class="thumb"><img src="{{T:Denvtsozcyc}}" alt="" width="320" height="180" loading="lazy"><i>11:43</i></span>
+        <span class="row-txt"><strong>斐波那契 0.618 就接多？完整攻略，從零開始教</strong></span>
+      </a>
+      <a class="row media" href="https://www.youtube.com/watch?v=TBX125Jzo3M" target="_blank" rel="noopener">
+        <span class="thumb"><img src="{{T:TBX125Jzo3M}}" alt="" width="320" height="180" loading="lazy"><i>10:31</i></span>
+        <span class="row-txt"><strong>你手上的 AI 股票排在第幾層？8 種公司怎麼分錢</strong></span>
+      </a>
+      <a class="row media" href="https://www.youtube.com/watch?v=1UFTs20trzE" target="_blank" rel="noopener">
+        <span class="thumb"><img src="{{T:1UFTs20trzE}}" alt="" width="320" height="180" loading="lazy"><i>8:51</i></span>
+        <span class="row-txt"><strong>輸掉 731 筆交易卻拿下世界冠軍：Martin Luk 的回調策略</strong></span>
+      </a>
+    </nav>
+    <a class="more" href="https://www.youtube.com/playlist?list=PLRhyMmtHD9xs" target="_blank" rel="noopener">看完整精選清單</a>
+  </section>
+
+  <section class="group rise courses" aria-label="播放清單">
+    <p class="eyebrow">照主線看</p>
+    <nav class="index">
+      <a class="row media" href="https://www.youtube.com/playlist?list=PLXRTsUuycOG8" target="_blank" rel="noopener">
+        <span class="thumb pl"><img src="{{T:PLXRTsUuycOG8}}" alt="" width="320" height="180" loading="lazy"><i>播放清單</i></span>
+        <span class="row-txt"><strong>指標實戰室</strong><span>一支片一個指標，真圖加回測</span></span>
+      </a>
+      <a class="row media" href="https://www.youtube.com/playlist?list=PLJZkVu56A35g" target="_blank" rel="noopener">
+        <span class="thumb pl"><img src="{{T:PLJZkVu56A35g}}" alt="" width="320" height="180" loading="lazy"><i>播放清單</i></span>
+        <span class="row-txt"><strong>交易員拆解</strong><span>把高手的方法拆到進場和停損</span></span>
+      </a>
+      <a class="row media" href="https://www.youtube.com/playlist?list=PLEUsWNH3K6tI" target="_blank" rel="noopener">
+        <span class="thumb pl"><img src="{{T:PLEUsWNH3K6tI}}" alt="" width="320" height="180" loading="lazy"><i>播放清單</i></span>
+        <span class="row-txt"><strong>AI 產業鏈深度解析</strong><span>每家公司在哪一層，錢怎麼流</span></span>
+      </a>
+      <a class="row media" href="https://www.youtube.com/playlist?list=PLeHe6HLDA44I" target="_blank" rel="noopener">
+        <span class="thumb pl"><img src="{{T:PLeHe6HLDA44I}}" alt="" width="320" height="180" loading="lazy"><i>播放清單</i></span>
+        <span class="row-txt"><strong>新手入門</strong><span>K 線、畫線、資金管理</span></span>
+      </a>
+      <a class="row media" href="https://www.youtube.com/playlist?list=PLEUD4tHLbhK4" target="_blank" rel="noopener">
+        <span class="thumb pl"><img src="{{T:PLEUD4tHLbhK4}}" alt="" width="320" height="180" loading="lazy"><i>播放清單</i></span>
+        <span class="row-txt"><strong>聰明錢 SMC</strong><span>一課一個概念</span></span>
+      </a>
+      <a class="row media" href="https://www.youtube.com/playlist?list=PLB1ciUlr8gTo" target="_blank" rel="noopener">
+        <span class="thumb pl"><img src="{{T:PLB1ciUlr8gTo}}" alt="" width="320" height="180" loading="lazy"><i>播放清單</i></span>
+        <span class="row-txt"><strong>價格行為學</strong><span>裸 K 交易完整課程</span></span>
+      </a>
+    </nav>
+  </section>
+
+  <section class="group rise sched" aria-label="更新時間">
+    <p class="eyebrow">更新時間</p>
+    <dl class="times">
+      <div><dt>長片</dt><dd>隔天一支<b>12:00</b></dd></div>
+      <div><dt>短片</dt><dd>每天兩支<b>18:00・21:00</b></dd></div>
+      <div><dt>直播</dt><dd>每週二、週四<b>22:30</b></dd></div>
+    </dl>
+    <p class="note">以上是日本時間，台灣時間減 1 小時。<a href="https://www.youtube.com/playlist?list=PLeCE9yEvnhsE" target="_blank" rel="noopener">看直播回放</a></p>
+  </section>
+
+  <section class="group rise tools" aria-label="看盤軟體">
+    <p class="eyebrow">看盤軟體</p>
     <nav class="index">
       <a class="row" href="https://tw.tradingview.com/?aff_id=1172478" target="_blank" rel="noopener sponsored">
         <span class="row-txt"><strong>TradingView</strong><span>影片裡用的看盤軟體</span></span>
         <span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-      </a>
-    </nav>
-  </section>
-
-  <section class="group rise videos" aria-label="熱門影片">
-    <p class="eyebrow">熱門影片</p>
-    <nav class="index">
-      <a class="row media" href="https://www.youtube.com/watch?v=mJfV-iSjo8w" target="_blank" rel="noopener">
-        <span class="thumb"><img src="{{T:mJfV-iSjo8w}}" alt="" width="320" height="180" loading="lazy"><i>3:37</i></span>
-        <span class="row-txt"><strong>1011 暴跌一週年：一夜爆倉 190 億美元，開幾倍能活下來？</strong></span>
-      </a>
-      <a class="row media" href="https://www.youtube.com/watch?v=2kG8tEun2bU" target="_blank" rel="noopener">
-        <span class="thumb"><img src="{{T:2kG8tEun2bU}}" alt="" width="320" height="180" loading="lazy"><i>6:11</i></span>
-        <span class="row-txt"><strong>10 年前聽孫宇晨炒幣的，現在都財富自由了？</strong></span>
-      </a>
-      <a class="row media" href="https://www.youtube.com/watch?v=BQXpx4NAk38" target="_blank" rel="noopener">
-        <span class="thumb"><img src="{{T:BQXpx4NAk38}}" alt="" width="320" height="180" loading="lazy"><i>8:09</i></span>
-        <span class="row-txt"><strong>5 萬美元變 4800 萬：GameStop 完整故事</strong></span>
-      </a>
-    </nav>
-  </section>
-
-  <section class="group rise courses" aria-label="教學課程">
-    <p class="eyebrow">教學課程</p>
-    <nav class="index">
-      <a class="row media" href="https://www.youtube.com/playlist?list=PLeHe6HLDA44I" target="_blank" rel="noopener">
-        <span class="thumb pl"><img src="{{T:PLeHe6HLDA44I}}" alt="" width="320" height="180" loading="lazy"><i>播放清單</i></span>
-        <span class="row-txt"><strong>新手入門｜從零開始學交易</strong></span>
-      </a>
-      <a class="row media" href="https://www.youtube.com/playlist?list=PLB1ciUlr8gTo" target="_blank" rel="noopener">
-        <span class="thumb pl"><img src="{{T:PLB1ciUlr8gTo}}" alt="" width="320" height="180" loading="lazy"><i>播放清單</i></span>
-        <span class="row-txt"><strong>價格行為學｜裸 K 交易</strong></span>
-      </a>
-      <a class="row media" href="https://www.youtube.com/playlist?list=PLEUD4tHLbhK4" target="_blank" rel="noopener">
-        <span class="thumb pl"><img src="{{T:PLEUD4tHLbhK4}}" alt="" width="320" height="180" loading="lazy"><i>播放清單</i></span>
-        <span class="row-txt"><strong>聰明錢 SMC｜一課一個概念</strong></span>
-      </a>
-      <a class="row media" href="https://www.youtube.com/playlist?list=PLXRTsUuycOG8" target="_blank" rel="noopener">
-        <span class="thumb pl"><img src="{{T:PLXRTsUuycOG8}}" alt="" width="320" height="180" loading="lazy"><i>播放清單</i></span>
-        <span class="row-txt"><strong>指標實戰室｜TradingView 真圖實測</strong></span>
       </a>
     </nav>
   </section>
